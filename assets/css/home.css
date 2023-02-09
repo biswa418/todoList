@@ -1,0 +1,105 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, white, #dddddd);
+}
+
+
+/* description */
+textarea {
+    border: none;
+    color: grey;
+    resize: none;
+    background-color: transparent;
+}
+
+textarea:active,
+textarea:focus,
+textarea:focus-visible {
+    border: none;
+}
+
+/* container */
+.category {
+    display: flex;
+}
+
+.drop {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid lightgrey;
+    width: 50%;
+    padding: 0 1% 0 0;
+    margin: 0 1% 0 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.due-date {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 1%;
+    margin: 0 1% 0 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+select {
+    border: none;
+    color: gray;
+    background-color: transparent;
+}
+
+input[type="date"] {
+    background-color: transparent;
+}
+
+/* date selection */
+#due {
+    border: none;
+    color: grey;
+}
+
+
+/* heading */
+#heading {
+    margin-top: 2%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    color: #535353;
+}
+
+#bg {
+    display: inline-block;
+    position: absolute;
+    /* left: 0; */
+    z-index: -1;
+    width: 60px;
+    height: 60px;
+    background-color: lightpink;
+    rotate: 20deg;
+    margin: 0% 0 0% -1%;
+}
+
+/* buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons>button,
+.buttons>a>button {
+    height: 3rem;
+    font-size: 1rem;
+    margin-right: 1.4rem;
+}
