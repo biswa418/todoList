@@ -135,6 +135,10 @@ input[type="checkbox"] {
     margin-top: 5px;
 }
 
+input[type="checkbox"]:checked+.details {
+    text-decoration: line-through;
+}
+
 .details {
     color: #6a6a6a;
 }
@@ -145,7 +149,7 @@ input[type="checkbox"] {
 
 .dates {
     color: darkgray;
-    font-size: medium;
+    font-size: small;
 }
 
 

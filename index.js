@@ -40,6 +40,10 @@ app.post('/addTask', function (req, res) {
         year: "numeric"
     });
 
+    if (dat == "Invalid Date") {
+        dat = "NO DEADLINE"
+    }
+
     Tasks.create({
         description: req.body.desc,
         category: req.body.category,
@@ -57,9 +61,9 @@ app.post('/addTask', function (req, res) {
 
 //delete by getting the ids
 app.post('/delete', function (req, res) {
-    let length = Object.keys(req.body).length;
+    let keys = Object.keys(req.body);
 
-    for (let k = 0; k < length; k++) {
+    for (let k of keys) {
         Tasks.findByIdAndDelete(req.body[k], function (err) {
             if (err) {
                 console.log('Could not delete the entry with id', id);
