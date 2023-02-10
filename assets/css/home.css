@@ -8,6 +8,7 @@ body {
     margin: 0;
     font-size: 1.2rem;
     background: linear-gradient(45deg, white, #dddddd);
+    font-family: sans-serif;
 }
 
 
@@ -97,9 +98,83 @@ input[type="date"] {
     justify-content: center;
 }
 
-.buttons>button,
-.buttons>a>button {
+.buttons_cmn {
     height: 3rem;
     font-size: 1rem;
     margin-right: 1.4rem;
+}
+
+
+/* tasks */
+#taskContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#taskContainer ul {
+    list-style: none;
+    width: 80%;
+    padding: 0;
+}
+
+.tasks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tasks>div {
+    display: flex;
+}
+
+input[type="checkbox"] {
+    margin-right: 1rem;
+    font-size: larger;
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+}
+
+.details {
+    color: #6a6a6a;
+}
+
+.details h4 {
+    font-size: large;
+}
+
+.dates {
+    color: darkgray;
+    font-size: medium;
+}
+
+
+/* color for each category */
+.catCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    box-sizing: border-box;
+    padding: 0.7rem;
+    width: 6rem;
+    height: 2.3rem;
+    border-radius: 10px;
+    font-size: large;
+}
+
+.Personal {
+    background-color: green;
+}
+
+.Work {
+    background-color: purple;
+}
+
+.Cleaning {
+    background-color: goldenrod;
+}
+
+.Others {
+    background-color: orange;
 }

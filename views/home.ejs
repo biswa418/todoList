@@ -24,7 +24,7 @@
     <br>
     <hr>
 
-    <form action="/" method="post">
+    <form action="/addTask" method="post">
         <div class="container" style="display: flex; flex-direction: column; justify-content: flex-start;">
             <label for="description">Description</label>
             <textarea name="desc" placeholder="What do you need to do?" required></textarea>
@@ -35,65 +35,73 @@
         <div class="container category">
             <div class="dropdown drop">
                 <label for="category">Category</label>
-                <select class="custom-select" required>
+                <select class="custom-select" name="category" required>
                     <option selected disabled>Choose your category</option>
-                    <option value="1">Personal</option>
-                    <option value="2">Work</option>
-                    <option value="3">Cleaning</option>
-                    <option value="4">Others</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Cleaning">Cleaning</option>
+                    <option value="Others">Others</option>
                 </select>
             </div>
 
             <div class="due-date">
                 <label for="due">Due Date</label>
-                <input type="date" id="due" name="due">
+                <input type="date" id="due" name="due" required>
             </div>
         </div>
 
         <hr>
 
         <div class="buttons">
-            <button class="btn btn-secondary" type="submit" name="add">
+            <button class="btn btn-secondary buttons_cmn" type="submit">
                 <i class="fa-solid fa-plus"></i>
                 Add Task
             </button>
-
-            <a href="/delete/?id">
-                <button class="btn btn-danger" type="submit" name="delete">
-                    <i class="fa-solid fa-trash-can"></i>
-                    Delete Task
-                </button>
-            </a>
-        </div>
     </form>
 
-    <hr>
 
-    <div id="taskContainer">
-        <ul>
-            <% for(let i of tasks){ %>
+    <form action="/delete" method="post">
+        <button class="btn btn-danger buttons_cmn" type="submit" name="" value="">
+            <i class="fa-solid fa-trash-can"></i>
+            Delete Task
+        </button>
+        </div>
 
-                <li class="contacts">
-                    <div class="details">
-                        <p>
-                            <%= i.description %>
-                        </p>
+        <hr>
 
-                        <p>
-                            <%= i.due_date %>
-                        </p>
+        <div id="taskContainer">
+            <ul>
+                <% let j=0; %>
+                    <% for(let i of tasks){ %>
 
-                        <p>
-                            <%= i.category %>
-                        </p>
-                    </div>
+                        <li class="tasks">
+                            <div>
+                                <input type="checkbox" name="<%= j %>" value="<%= i._id %>">
+                                <div class="details">
 
+                                    <h4>
+                                        <%= i.description %>
+                                    </h4>
 
-                </li>
+                                    <p class="dates">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <%= i.due_date %>
+                                    </p>
+                                </div>
+                            </div>
 
-                <% } %>
-        </ul>
-    </div>
+                            <div class="catCard <%= i.category %>">
+                                <%= i.category %>
+                            </div>
+
+                        </li>
+
+                        <% j++; %>
+
+                            <% } %>
+            </ul>
+        </div>
+    </form>
 
 
 

@@ -2,6 +2,11 @@ const express = require('express');
 const path = require('path');
 const port = 8000;
 
+//setting up the database
+const db = require('./config/mongoose');
+const Tasks = require('./models/tasks');
+
+
 //initialize app
 const app = express();
 
@@ -11,38 +16,62 @@ app.set('views', path.join(__dirname, 'views')); // `${__dirname}/views` also wo
 app.use(express.urlencoded({ extended: true })); // parser used -- extened is provided explicitly
 app.use(express.static('assets'));
 
-var tasks = [
-    {
-        "description": "Here is a random thought!! Drink water <3",
-        "category": "personal",
-        "due_date": "12/02/2020"
-    },
-    {
-        "description": "Here is a random thought!! Drink water <3",
-        "category": "personal",
-        "due_date": "12/02/2020"
-    },
-
-    {
-        "description": "Here is a random thought!! Drink water <3",
-        "category": "personal",
-        "due_date": "12/02/2020"
-    },
-
-    {
-        "description": "Here is a random thought!! Drink water <3",
-        "category": "personal",
-        "due_date": "12/02/2020"
-    }
-]
-
+//load the home page
 app.get('/', function (req, res) {
-    return res.render('home', {
-        title: "toDoList",
-        tasks: tasks
+    Tasks.find({}, function (err, tasks) {
+        if (err) {
+            console.log('could not fetch data from db');
+            return;
+        }
+
+        return res.render('home', {
+            title: "Todo List",
+            tasks: tasks
+        });
+
     });
 });
 
+// adding the tasks
+app.post('/addTask', function (req, res) {
+    let dat = new Date(req.body.due).toLocaleString("en-GB", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+
+    Tasks.create({
+        description: req.body.desc,
+        category: req.body.category,
+        due_date: dat
+    }, function (err, task) {
+        if (err) {
+            console.log('Could not add the task', err);
+            return;
+        }
+
+        return res.redirect('back');
+    });
+
+});
+
+//delete by getting the ids
+app.post('/delete', function (req, res) {
+    let length = Object.keys(req.body).length;
+
+    for (let k = 0; k < length; k++) {
+        Tasks.findByIdAndDelete(req.body[k], function (err) {
+            if (err) {
+                console.log('Could not delete the entry with id', id);
+                return;
+            }
+        });
+    }
+
+    return res.redirect('back');
+});
+
+//Start the server
 app.listen(port, function (err) {
     if (err) {
         console.log(`Could not start the server: ${err}`);
