@@ -87,9 +87,9 @@ input[type="date"] {
     z-index: -1;
     width: 60px;
     height: 60px;
-    background-color: lightpink;
+    background: linear-gradient(to right, #36D1DC, #5B86E5);
     rotate: 20deg;
-    margin: 0% 0 0% -1%;
+    margin: -5px 0 0% -1%;
 }
 
 /* buttons */
@@ -102,6 +102,39 @@ input[type="date"] {
     height: 3rem;
     font-size: 1rem;
     margin-right: 1.4rem;
+}
+
+.btn-grad {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.btn-grad2 {
+    background-image: linear-gradient(to right, #C04848 0%, #480048 51%, #C04848 100%);
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+}
+
+.btn-grad2:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }
 
 
@@ -168,17 +201,17 @@ input[type="checkbox"]:checked+.details {
 }
 
 .Personal {
-    background-color: green;
+    background: linear-gradient(to right, #556270, #FF6B6B);
 }
 
 .Work {
-    background-color: purple;
+    background: linear-gradient(to right, #B24592, #F15F79);
 }
 
 .Cleaning {
-    background-color: goldenrod;
+    background: linear-gradient(to right, #2980b9, #2c3e50);
 }
 
 .Others {
-    background-color: orange;
+    background: linear-gradient(to right, #C02425, #F0CB35);
 }
